@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { addBLog, updateBlog } from "../api/blog.api";
 
-const AddBlog = ({blogToEdit, blogData, setBlogData, setBlogs}) => {
+const AddBlog = ({blogToEdit, setBlogToEdit, setBlogs, blogs}) => {
   const [formData, setFormData] = useState({
     title: "", content: ""
   });
@@ -13,14 +13,19 @@ const AddBlog = ({blogToEdit, blogData, setBlogData, setBlogs}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if(blogData.title === "") {
-      const {data} = await addBLog(formData);
-
-      setBlogs((prev) => ({...prev, data}))
+    if(blogToEdit?._id) {
+      const response = await updateBlog(blogToEdit._id, formData)
+      setBlogs(response.data)
+      clear()
     }
-    else setBlogData(formData);
-    clear();
+    else {
+      const response = await addBLog(formData);
+      const updatedBlogs = [...blogs, response.data]
+
+      setBlogs(updatedBlogs)
+      clear();
+    }
+
   };
 
   const clear = () => {

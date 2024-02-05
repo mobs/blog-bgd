@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { deleteBlog, getBlogs } from '../api/blog.api'
+import React from 'react'
+import { deleteBlog } from '../api/blog.api'
 
 const Blog = ({setBlogToEdit, blogData, blogs}) => {
 
     const handleEdit = (blog) => {
+        console.log(blog)
         setBlogToEdit(blog);
     }
     
