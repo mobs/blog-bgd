@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { deleteBlog, getBlogs, updateBlog } from '../api/blog.api'
+import { deleteBlog, getBlogs } from '../api/blog.api'
 
-const Blog = () => {
-    const [blogs, setBlogs] = useState([]);
+const Blog = ({setBlogToEdit, blogData, blogs}) => {
 
-    const handleEdit = (e) => {
-        
+    const handleEdit = (blog) => {
+        setBlogToEdit(blog);
     }
     
     const handleDelete = async (id) => {
         const response = await deleteBlog(id);
-        console.log(response)
+        if(response) {
+            alert("Blog deleted successfuully")
+        }
     }
 
-    useEffect(() => {
-        ;(async () => {
-            const response = await getBlogs();
-            console.log(response)
-            if(response) setBlogs(response.data)
-        })()
-
-    }, [])
 
   return (
     <div className='m-4'>
@@ -35,7 +28,7 @@ const Blog = () => {
                             {blog.content}
                         </div>
                         <div className='flex gap-4'>
-                            <button onClick={(id) => handleEdit(blog._id)} className='bg-green-500 p-4'> Edit </button>
+                            <button onClick={() => handleEdit(blog)} className='bg-green-500 p-4'> Edit </button>
                             <button onClick={(id) => handleDelete(blog._id)} className='bg-red-600 p-4'> Delete </button>
                         </div>
                     </div>

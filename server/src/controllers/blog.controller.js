@@ -55,12 +55,32 @@ export const addBlog = asyncHandler (async (req, res) => {
 })
 
 export const updateBlog = asyncHandler( async (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
+    const { title, content } = req.body;
+
     try {   
         if(!id) {
             throw new ApiError(400, "Id is required to delete a blog")
         }
 
+        await Blog.findOneAndUpdate({
+            _id: id
+        },
+        {
+            $set: {
+                title: title,
+                content: content
+            }
+        }, {
+            new: true
+        }
+        )
+
+        const blogs = await Blog.find()
+
+        return res
+            .status(200)
+            .json(new ApiResponse(200, blogs, "Product updated successfully"))
         
     } catch (error) {
         throw res.status(error.statusCode).json({

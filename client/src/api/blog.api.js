@@ -17,7 +17,6 @@ export const addBLog = async (formData) => {
         const response = await API.post("/blogs/addBlog", formData)
 
         return response.data
-        
     } catch (error) {
         console.log("Error in addBlog :: ", error.message)
     }
@@ -33,9 +32,9 @@ export const updateBlog = async (id, formData) => {
     }
 }
 
-export const deleteBlog = async () => {
+export const deleteBlog = async (id) => {
     try {
-        const response = await API.delete(`/blogs/updateBlog/${id}`)
+        const response = await API.delete(`/blogs/deleteBlog/${id}`)
 
         return response.data;
     } catch (error) {

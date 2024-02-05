@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import { addBLog } from "../api/blog.api";
+import React, { useEffect, useState } from "react";
+import { addBLog, updateBlog } from "../api/blog.api";
 
-const AddBlog = () => {
+const AddBlog = ({blogToEdit, blogData, setBlogData, setBlogs}) => {
   const [formData, setFormData] = useState({
     title: "", content: ""
   });
 
+  useEffect(() => {
+    setFormData({title: blogToEdit?.title, content: blogToEdit?.content})
+  }, [blogToEdit])
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if(blogData.title === "") {
+      const {data} = await addBLog(formData);
 
-    // add blog api
-    const data = await addBLog(formData);
+      setBlogs((prev) => ({...prev, data}))
+    }
+    else setBlogData(formData);
+    clear();
   };
 
   const clear = () => {
