@@ -1,11 +1,11 @@
-# GST Checker App
+# Blog-BGD APP
 
 # Frontend
 # React + Vite
 
 -  This template provides a setup to get React working in Vite with HMR and some ESLint rules.
 
--  It is a GST Checker app that gives you details for a given GST Number(dummy data created using fakerjs)
+-  It is a Blog Bgd app that gives you the blogs and CRUD application over it
 
 ## Table of Contents
 
