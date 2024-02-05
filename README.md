@@ -1,17 +1,83 @@
-"# blog-bgd" 
+# GST Checker App
 
-#FRONTEND
+# Frontend
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-  This template provides a setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+-  It is a GST Checker app that gives you details for a given GST Number(dummy data created using fakerjs)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-#BACKEND 
-# backend for my blog-app
+- [Installation](#installation)
+- [Folder Structure](#folder-structure)
+- [Scripts](#scripts)
+- [Build and Deployment](#build-and-deployment)
+- [Additional Information](#additional-information)
 
-This is a backend made for my blog app.
-This is developed by using Node.js, Express.js and MongoDB.
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/mobs/blog-bgd.git
+
+2. Navigate to the folder
+   cd client
+
+3. Run this command to install the dependencies
+   npm install
+
+4. Run this command to see the code (http://localhost:5173)
+   npm run dev
+
+## Folder Structure
+
+client/
+src/                # Source code
+  |- components/    # React components
+  |- constants/      # Constant Data and Images
+  |- ...
+public/             # Public assets
+  |- ...
+index.html          # Entry point (HTML Template)
+package.json        # Dependencies and Scripts
+...
+
+## Scripts
+
+1.  npm run dev: Start the development server.
+2.  npm run build: Build the project for production.
+3.  npm run preview: Preview the production build.
+4.  npm run lint: Run ESLint to lint your code.
+
+
+## Additional Information
+
+1.  Used Tailwind CSS for styling
+2.  Used Vite for faster build time, seamless integration and ease of use
+3.  Used Fakerjs to generate fake GST data
+
+# Backend 
+
+## Folder Structure
+
+server/
+src/                 # Source code
+  |- controllers/    # Route controllers
+  |- routes/         # Routes defination 
+  |- app.js          # Express app
+  |- index.js        # Entry point of server
+  |- ...
+public/             # Public assets
+  |- ...
+package.json        # Dependencies and Scripts
+...
+
+
+## Scripts
+
+1.  npm run dev: Start the development server.
+2.  npm run build: Build the project for production.
+3.  npm run start: Start the production server
